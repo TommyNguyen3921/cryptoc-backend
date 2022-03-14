@@ -21,7 +21,7 @@ app.get('/',(req,res) => {
     res.send('hello to crypto api');
 });
 
-app.get('/users',(req,res) => {
+app.get('/users/signup',(req,res) => {
     res.send('hello to users');
 });
 const PORT = process.env.PORT || 5000;
