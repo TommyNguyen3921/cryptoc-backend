@@ -55,7 +55,7 @@ export const addfav = async (req,res) => {
     //reconstruct id
     const {id: _id} = req.params;
     const fav = req.body;
-    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Fav with that id');
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No Fav with that id');
 
     const updatedFav = await User.findByIdAndUpdate(_id, {$push: {fav: fav}}, {new: true}); 
     res.json(updatedFav);
