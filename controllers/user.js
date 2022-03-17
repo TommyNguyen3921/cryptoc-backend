@@ -62,3 +62,19 @@ export const addfav = async (req,res) => {
  
     
 }
+
+export const getPosts = async (req,res) => {
+
+    const {id: _id} = req.params;
+    
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No Fav with that id');
+    
+    try {
+        const postMessage = await User.find({_id});
+       
+
+        res.status(200).json(postMessage);
+    } catch (error) {
+        res.status(404).json({message: error.message})
+    }
+}
