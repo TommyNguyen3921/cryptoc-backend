@@ -1,7 +1,9 @@
+import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import User from '../models/user.js';
+import usermodel from '../models/user.js';
 
 export const signin = async (req,res) => {
 
@@ -46,4 +48,17 @@ export const signup = async (req,res) => {
     } catch (error) {
         res.status(500).json({message: 'Something went wrong.'})
     }
+}
+
+export const addfav = async (req,res) => {
+
+    //reconstruct id
+    const {id: _id} = req.params;
+    const fav = req.body;
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Fav with that id');
+
+    const updatedFav = await User.findByIdAndUpdate(_id, {$push: {fav: fav}}, {new: true}); 
+    res.json(updatedFav);
+ 
+    
 }
