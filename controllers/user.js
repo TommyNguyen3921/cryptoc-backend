@@ -78,3 +78,14 @@ export const getPosts = async (req,res) => {
         res.status(404).json({message: error.message})
     }
 }
+
+export const deletePost = async (req,res) => {
+    const {id: _id} = req.params;
+    const fav = req.body;
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No Fav with that id');
+    
+    
+    await User.findByIdAndUpdate(_id, { $pull: { fav: {_id:fav._id} } } );
+    res.json({message: 'Fav deleted successfully'});
+}
+
