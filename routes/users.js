@@ -10,6 +10,6 @@ router.post('/signin',signin);
 router.post('/signup',signup);
 router.patch('/:id',addfav);
 router.get('/:id',getPosts);
-router.patch('remove/:id', deletePost);
+router.patch('/remove/:id', deletePost);
 
 export default router
