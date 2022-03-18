@@ -81,8 +81,8 @@ export const getPosts = async (req,res) => {
 
 export const deletePost = async (req,res) => {
     const {id: _id} = req.params;
-    const fav = req.body;
-    console.log("hello");
+    const fav = req.body.value;
+    console.log(fav);
     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No Fav with that id');
     
     
