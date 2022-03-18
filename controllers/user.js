@@ -86,7 +86,7 @@ export const deletePost = async (req,res) => {
     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No Fav with that id');
     
     
-    await User.findByIdAndUpdate(_id, { $pull: { fav: {_id:fav} } } );
+    await User.findByIdAndUpdate(_id, { $pull: { fav: {_id:fav._id} } } );
     res.json({message: 'Fav deleted successfully'});
 }
 
