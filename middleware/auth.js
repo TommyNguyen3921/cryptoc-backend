@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken';
 
-var util = require('util')
+
 const auth = async (req, res, next) => {
     try {
-        console.log("test" + util.inspect(req));
-        const token = req.headers.authorization.split(" ")[1];
         
+        const token = req.headers.authorization.split(" ")[1];
+        console.log(token);
         let decodedData = jwt.verify(token, 'test');
 
         req.userId = decodedData?.id;
