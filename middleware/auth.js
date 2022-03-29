@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 const auth = async (req, res, next) => {
     try {
-        console.log("test " +req);
+        console.log("test " +req.headers.Authorization);
         const token = req.headers.Authorization.split(" ")[1];
         
         let decodedData = jwt.verify(token, 'test');
