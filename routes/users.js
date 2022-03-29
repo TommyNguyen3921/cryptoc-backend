@@ -7,13 +7,13 @@ const router = express.Router();
 
 //video 1:50:09 for auth for fav
 
-//this rotues would be localhost:500/posts
+
 
 
 router.post('/signin',signin);
 router.post('/signup',signup);
-router.patch('/:id',auth,addfav);
-router.get('/:id',auth,getPosts);
-router.patch('/remove/:id',auth, deletePost);
+router.patch('/:id',addfav);
+router.get('/:id',getPosts);
+router.patch('/remove/:id', deletePost);
 
 export default router
