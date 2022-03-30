@@ -5,7 +5,7 @@ const auth = async (req, res, next) => {
         
         const token = req.headers.authorization.split(" ")[1];
         
-        let decodedData = jwt.verify(token, 'test');
+        let decodedData = jwt.verify(token, 'tes');
 
         req.userId = decodedData?.id;
 
